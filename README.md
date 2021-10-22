@@ -1,1 +1,4 @@
-* text=auto
+# Tic-tac-toe
+
+---
+In progress
