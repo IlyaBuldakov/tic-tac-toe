@@ -14,7 +14,9 @@
  *    limitations under the License.
  */
 
-package com.study;
+package com.study.component;
+
+import com.study.model.GameTable;
 
 import java.util.Random;
 

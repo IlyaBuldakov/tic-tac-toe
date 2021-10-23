@@ -14,18 +14,11 @@
  *    limitations under the License.
  */
 
-package com.study;
+package com.study.model;
 
 /**
  * * @author study
  */
-public class DataPrinter {
+public class GameTable {
 
-    public void printMappingTable() {
-
-    }
-
-    public void printGameTable(final GameTable gameTable) {
-
-    }
 }

@@ -14,14 +14,16 @@
  *    limitations under the License.
  */
 
-package com.study;
+package com.study.component;
+
+import com.study.model.GameTable;
 
 /**
  * * @author study
  */
-public class DrawVerifier {
+public class UserMove {
 
-    public boolean isDraw(final GameTable gameTable) {
-        return false;
+    public void make(final GameTable gameTable) {
+
     }
 }

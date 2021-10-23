@@ -14,11 +14,16 @@
  *    limitations under the License.
  */
 
-package com.study;
+package com.study.component;
+
+import com.study.model.GameTable;
 
 /**
  * * @author study
  */
-public class GameTable {
+public class ComputerMove {
 
+    public void make(final GameTable gameTable) {
+
+    }
 }

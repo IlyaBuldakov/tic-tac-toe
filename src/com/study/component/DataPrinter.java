@@ -14,14 +14,20 @@
  *    limitations under the License.
  */
 
-package com.study;
+package com.study.component;
+
+import com.study.model.GameTable;
 
 /**
  * * @author study
  */
-public class UserMove {
+public class DataPrinter {
 
-    public void make(final GameTable gameTable) {
+    public void printMappingTable() {
+
+    }
+
+    public void printGameTable(final GameTable gameTable) {
 
     }
 }

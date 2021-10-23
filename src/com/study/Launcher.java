@@ -16,6 +16,8 @@
 
 package com.study;
 
+import com.study.component.*;
+
 /**
  * * @author study
  */
