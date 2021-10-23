@@ -46,7 +46,9 @@ public class GameTable {
         sb.append("table=");
         for (int i = 0; i < table.length; i++) {
             sb.append(Arrays.toString(table[i]));
-            if (i < table.length - 1) sb.append(";");
+            if (i < table.length - 1) {
+                sb.append(';');
+            }
         }
         sb.append('}');
         return sb.toString();
