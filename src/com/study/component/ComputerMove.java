@@ -16,7 +16,10 @@
 
 package com.study.component;
 
+import com.study.model.Cell;
 import com.study.model.GameTable;
+
+import java.util.Random;
 
 /**
  * * @author study
@@ -24,6 +27,16 @@ import com.study.model.GameTable;
 public class ComputerMove {
 
     public void make(final GameTable gameTable) {
+        final Random rand = new Random();
+        while (true) {
+            final int row = rand.nextInt(3);
+            final int col = rand.nextInt(3);
+            final Cell randomCell = new Cell(row, col);
 
+            if (gameTable.isEmpty(randomCell)) {
+                gameTable.setSign(randomCell, 'O');
+                return;
+            }
+        }
     }
 }
