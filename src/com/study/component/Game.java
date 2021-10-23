@@ -26,9 +26,13 @@ import java.util.Random;
 public class Game {
 
     private final DataPrinter dataPrinter;
+
     private final ComputerMove computerMove;
+
     private final UserMove userMove;
+
     private final WinnerVerifier winnerVerifier;
+
     private final DrawVerifier drawVerifier;
 
     public Game(final DataPrinter dataPrinter,
@@ -63,6 +67,7 @@ public class Game {
                 break;
             }
             computerMove.make(gameTable);
+            dataPrinter.printGameTable(gameTable);
             if (winnerVerifier.isComputerWin(gameTable)) {
                 System.out.println("COMPUTER WIN!");
                 break;
@@ -72,6 +77,6 @@ public class Game {
                 break;
             }
         }
-        System.out.println("GAME OVER");
+        System.out.println("GAME OVER!");
     }
 }

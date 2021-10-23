@@ -23,15 +23,14 @@ import com.study.model.GameTable;
  * * @author study
  */
 public class DataPrinter {
-
     public void printMappingTable() {
-        System.out.println("-------------\n" +
-                "| 7 | 8 | 9 |\n" +
-                "-------------\n" +
-                "| 4 | 5 | 6 |\n" +
-                "-------------\n" +
-                "| 1 | 2 | 3 |\n" +
-                "-------------\n");
+        System.out.println("-------------");
+        System.out.println("| 7 | 8 | 9 |");
+        System.out.println("-------------");
+        System.out.println("| 4 | 5 | 6 |");
+        System.out.println("-------------");
+        System.out.println("| 1 | 2 | 3 |");
+        System.out.println("-------------");
     }
 
     public void printGameTable(final GameTable gameTable) {
