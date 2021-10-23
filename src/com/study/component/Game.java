@@ -18,6 +18,7 @@ package com.study.component;
 
 import com.study.model.GameTable;
 
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -47,7 +48,7 @@ public class Game {
         this.drawVerifier = drawVerifier;
     }
 
-    public void play() {
+    public void play() throws IOException {
         System.out.println("Use the following mapping table to specify a cell using numbers from 1 to 9:");
         dataPrinter.printMappingTable();
         final GameTable gameTable = new GameTable();
