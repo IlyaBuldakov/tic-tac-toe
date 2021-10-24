@@ -23,13 +23,22 @@ import com.study.model.GameTable;
  * * @author study
  */
 public class DataPrinter {
+
+    private final CellNumberConverter cellNumberConverter;
+
+    public DataPrinter(CellNumberConverter cellNumberConverter) {
+        this.cellNumberConverter = new CellNumberConverter();
+    }
+
+
     public void printMappingTable() {
-        System.out.println("-------------");
-        System.out.println("| 7 | 8 | 9 |");
-        System.out.println("-------------");
-        System.out.println("| 4 | 5 | 6 |");
-        System.out.println("-------------");
-        System.out.println("| 1 | 2 | 3 |");
+        for (int i = 0; i < 3; i++) {
+            System.out.println("-------------");
+            for (int j = 0; j < 3; j++) {
+                System.out.print("| " + cellNumberConverter.toNumber(new Cell(i, j)) + " ");
+            }
+            System.out.println("|");
+        }
         System.out.println("-------------");
     }
 

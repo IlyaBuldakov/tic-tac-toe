@@ -14,19 +14,32 @@
  *    limitations under the License.
  */
 
-package com.study;
+package com.study.component;
 
-import com.study.component.*;
+import com.study.model.Cell;
 
 /**
  * * @author study
  */
-public final class Launcher {
-    public static void main(final String[] args) {
-        final CellNumberConverter cellNumberConverter = new CellNumberConverter();
+public class CellNumberConverter {
 
-        Game game = new Game(
-                new DataPrinter(cellNumberConverter), new ComputerMove(), new UserMove(cellNumberConverter), new WinnerVerifier(), new CellVerifier());
-        game.play();
+    private final char[][] table = {
+            {'7', '8', '9'},
+            {'4', '5', '6'},
+            {'1', '2', '3'}
+    };
+
+    public Cell toCell(final char number) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (table[i][j] == number) return new Cell(i, j);
+            }
+        }
+        return null;
     }
+
+    public char toNumber(final Cell cell) {
+        return table[cell.getRow()][cell.getCol()];
+    }
+
 }

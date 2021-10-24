@@ -26,11 +26,11 @@ import java.util.Scanner;
  */
 public class UserMove {
 
-    private final char[][] table = {
-            {'7', '8', '9'},
-            {'4', '5', '6'},
-            {'1', '2', '3'}
-    };
+    private final CellNumberConverter cellNumberConverter;
+
+    public UserMove(final CellNumberConverter cellNumberConverter) {
+        this.cellNumberConverter = cellNumberConverter;
+    }
 
     public void make(final GameTable gameTable) {
         while (true) {
@@ -51,18 +51,10 @@ public class UserMove {
             if (userInput.length() == 1) {
                 final char ch = userInput.charAt(0);
                 if (ch >= '1' && ch <= '9') {
-                    return findCell(ch);
+                    return cellNumberConverter.toCell(ch);
                 }
             }
         }
     }
 
-    private Cell findCell(final char ch) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (table[i][j] == ch) return new Cell(i, j);
-            }
-        }
-        return null;
-    }
 }
