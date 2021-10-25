@@ -26,10 +26,9 @@ public class DataPrinter {
 
     private final CellNumberConverter cellNumberConverter;
 
-    public DataPrinter(CellNumberConverter cellNumberConverter) {
-        this.cellNumberConverter = new CellNumberConverter();
+    public DataPrinter(final CellNumberConverter cellNumberConverter) {
+        this.cellNumberConverter = cellNumberConverter;
     }
-
 
     public void printMappingTable() {
         for (int i = 0; i < 3; i++) {

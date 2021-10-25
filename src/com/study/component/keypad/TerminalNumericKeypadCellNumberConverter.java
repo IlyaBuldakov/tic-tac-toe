@@ -14,15 +14,34 @@
  *    limitations under the License.
  */
 
-package com.study.component;
+package com.study.component.keypad;
 
+import com.study.component.CellNumberConverter;
 import com.study.model.Cell;
 
 /**
  * * @author study
  */
-public interface CellNumberConverter {
-    Cell toCell(char number);
+public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
 
-    char toNumber(Cell cell);
+    private final char[][] table = {
+            {'1', '2', '3'},
+            {'4', '5', '6'},
+            {'7', '8', '9'}
+    };
+
+    @Override
+    public Cell toCell(final char number) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (table[i][j] == number) return new Cell(i, j);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public char toNumber(final Cell cell) {
+        return table[cell.getRow()][cell.getCol()];
+    }
 }
