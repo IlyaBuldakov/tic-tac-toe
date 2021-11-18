@@ -44,6 +44,7 @@
                 <include>*.cmd</include>
             </includes>
             <lineEnding>windows</lineEnding>
+            <filtered>true</filtered>
         </fileSet>
     </fileSets>
 </assembly>

@@ -44,6 +44,7 @@
             </includes>
             <lineEnding>unix</lineEnding>
             <fileMode>755</fileMode>
+            <filtered>true</filtered>
         </fileSet>
     </fileSets>
 </assembly>
