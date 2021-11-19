@@ -15,7 +15,7 @@
   -->
 <assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.0 http://maven.apache.org/xsd/assembly-2.1.0.xsd">
-    <id>unix</id>
+    <id>unix-with-jre</id>
     <formats>
         <format>tar.gz</format>
     </formats>
@@ -46,6 +46,24 @@
             <lineEnding>unix</lineEnding>
             <fileMode>755</fileMode>
             <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>.tmp/jre11-linux</directory>
+            <outputDirectory>jre</outputDirectory>
+            <includes>
+                <include>bin/java</include>
+                <include>bin/keytool</include>
+            </includes>
+            <fileMode>755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>.tmp/jre11-linux</directory>
+            <outputDirectory>jre</outputDirectory>
+            <excludes>
+                <exclude>bin/java</exclude>
+                <exclude>bin/keytool</exclude>
+            </excludes>
+            <fileMode>755</fileMode>
         </fileSet>
     </fileSets>
 </assembly>
