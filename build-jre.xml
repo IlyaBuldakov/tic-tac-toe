@@ -50,7 +50,6 @@
     </target>
 
     <!-- *********************************** FOR WINDOWS PLATFORM *********************************** -->
-
     <condition property="isCurrentWindows">
         <os family="windows"/>
     </condition>
@@ -80,6 +79,7 @@
         <get src="${jdk-windows-download-link}" dest="${target-tmp-dir}/jdk/jdk-windows.zip" skipexisting="true"/>
         <unzip src="${target-tmp-dir}/jdk/jdk-windows.zip" dest="${target-tmp-dir}/jdk/jdk-windows"/>
     </target>
+
     <!-- *********************************** FOR MACOS PLATFORM *********************************** -->
     <condition property="isCurrentMacos">
         <os family="mac"/>
@@ -146,6 +146,7 @@
         <get src="${jdk-linux-download-link}" dest="${target-tmp-dir}/jdk/jdk-linux.tar.gz" skipexisting="true"/>
         <untar src="${target-tmp-dir}/jdk/jdk-linux.tar.gz" dest="${target-tmp-dir}/jdk/jdk-linux" compression="gzip"/>
     </target>
+
     <!-- ********************************* MACRO DEFINITIONS ************************************* -->
     <macrodef name="build-jre">
         <attribute name="destDir"/>
@@ -161,5 +162,4 @@
             </exec>
         </sequential>
     </macrodef>
-    1
 </project>
