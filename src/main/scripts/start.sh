@@ -16,6 +16,6 @@
 #
 cd "$(dirname "$0")" || exit # for MacOS
 
-java -jar ${project.build.finalName}.jar
+java -jar ${project.build.finalName}-release.jar
 echo "Press enter to continue . . ."
 read -r test
