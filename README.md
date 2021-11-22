@@ -1,25 +1,68 @@
-# Tic-tac-toe
+# The Tic Tac Toe Project
 
----
+-----------------------------------------------------------------------------------
 
-### Instructions for compile and packaging with Apache Maven
+## Without JRE
 
-You need to create `target` directory with
-`mvn package`
+### Build instructions
 
-*If you need some info - [contact me](vk.com/lancehokage)*
+- Build distributions using maven tool:
 
-> You need to use `tic-tac-toe-1.0-SNAPSHOT-windows.zip` archive for **Windows**
->
-> And `tic-tac-toe-1.0-SNAPSHOT-unix.tar.gz` format for **Unix** (Linux/MacOS)
+```bash
+mvn -P without-jre clean package
+```
 
-#### How to start Tic Tac Toe on your computer
+- Use the following archives:
+  - `target/tic-tac-toe-${project.version}-windows.zip` for Windows
+  - `target/tic-tac-toe-${project.version}-unix.tar.gz` for MacOS or Linux
 
-- If you use Windows
-    - Download .zip archive
-    - Unpack archive
-    - Run start.cmd **in Terminal** (default on Windows)
-- If you use Unix (Linux/MacOS/other)
-    - Download tar.gz archive
-    - Unpack archive
-    - Run start.sh **in Terminal**
+### Run instructions
+
+- Download [OpenJDK 11](https://jdk.java.net/11/);
+- Unzip the downloaded OpenJDK archive;
+- Configure the `PATH` environment variable:
+  - Add `%JDK_HOME%\bin\` directory for Windows;
+  - Add `$JDK_HOME/bin/` directory for MacOS and Linux;
+- Re-login or restart computer;
+- Unzip the Tic tac toe distribution:
+  - Unzip `tic-tac-toe-${project.version}-windows.zip` for Windows;
+  - Unzip `tic-tac-toe-${project.version}-unix.tar.gz` for MacOS or Linux;
+- Go to unzipped directory;
+- Run the game by double-click on the start script:
+  - `start.cmd` for Windows;
+  - `start.sh` for MacOS or Linux;
+
+-----------------------------------------------------------------------------------
+
+## With JRE
+
+### Build instructions
+
+- Build distributions using maven tool:
+
+```bash
+mvn -P with-jre clean package
+```
+
+- Use the following archives:
+  - `target/tic-tac-toe-${project.version}-windows-with-jre.zip` for Windows
+  - `target/tic-tac-toe-${project.version}-macos-with-jre.tar.gz` for MacOS
+  - `target/tic-tac-toe-${project.version}-linux-with-jre.tar.gz` for Linux
+
+### Run instructions
+
+- Unzip the Tic tac toe distribution:
+  - Unzip `tic-tac-toe-${project.version}-windows-with-jre.zip` for Windows;
+  - Unzip `tic-tac-toe-${project.version}-macos-with-jre.tar.gz` for MacOS;
+  - Unzip `tic-tac-toe-${project.version}-linux-with-jre.tar.gz` for Linux;
+- Go to unzipped directory;
+- Run the game by double-click on the start script:
+  - `start.cmd` for Windows;
+  - `start.sh` for MacOS or Linux;
+
+-----------------------------------------------------------------------------------
+
+## Readme tutorial
+
+- https://guides.github.com/features/mastering-markdown/
+- https://help.github.com/categories/writing-on-github/
