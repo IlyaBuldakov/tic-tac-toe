@@ -16,26 +16,16 @@
 
 package com.study.component;
 
-import com.study.model.Cell;
-import com.study.model.GameTable;
-
-import java.util.Random;
-
 /**
  * * @author study
  */
-public class ComputerMove {
-
-    public void make(final GameTable gameTable) {
-        final Random random = new Random();
-        while (true) {
-            final int row = random.nextInt(3);
-            final int col = random.nextInt(3);
-            final Cell randomCell = new Cell(row, col);
-            if (gameTable.isEmpty(randomCell)) {
-                gameTable.setSign(randomCell, Sign.O);
-                return;
-            }
+public enum Sign {
+    X,
+    O,
+    EMPTY {
+        @Override
+        public String toString() {
+            return " ";
         }
-    }
+    };
 }
