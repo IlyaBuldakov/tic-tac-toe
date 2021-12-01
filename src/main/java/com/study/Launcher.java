@@ -27,7 +27,11 @@ public final class Launcher {
         final CellNumberConverter cellNumberConverter = new TerminalNumericKeypadCellNumberConverter();
 
         Game game = new Game(
-                new DataPrinter(cellNumberConverter), new ComputerMove(), new UserMove(cellNumberConverter), new WinnerVerifier(), new CellVerifier());
+                new DataPrinter(cellNumberConverter),
+                new ComputerMove(),
+                new UserMove(cellNumberConverter),
+                new WinnerVerifier(),
+                new CellVerifier());
         game.play();
     }
 }
