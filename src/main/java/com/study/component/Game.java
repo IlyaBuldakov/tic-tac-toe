@@ -48,35 +48,46 @@ public class Game {
     }
 
     public void play() {
+
+        final Move[] moves = new Move[]{userMove, computerMove};
+
         System.out.println("Use the following mapping table to specify a cell using numbers from 1 to 9:");
         dataPrinter.printMappingTable();
         final GameTable gameTable = new GameTable();
         if (new Random().nextBoolean()) {
-            computerMove.make(gameTable);
+            moves[1].make(gameTable);
             dataPrinter.printGameTable(gameTable);
         }
+
         while (true) {
-            userMove.make(gameTable);
-            dataPrinter.printGameTable(gameTable);
-            if (winnerVerifier.isUserWin(gameTable)) {
-                System.out.println("YOU WIN!");
-                break;
-            }
-            if (cellVerifier.allCellsFilled(gameTable)) {
-                System.out.println("Sorry, DRAW!");
-                break;
-            }
-            computerMove.make(gameTable);
-            dataPrinter.printGameTable(gameTable);
-            if (winnerVerifier.isComputerWin(gameTable)) {
-                System.out.println("COMPUTER WIN!");
-                break;
-            }
-            if (cellVerifier.allCellsFilled(gameTable)) {
-                System.out.println("Sorry, DRAW!");
-                break;
+            for (Move move : moves) {
+                move.make(gameTable);
+                dataPrinter.printGameTable(gameTable);
+                if (move instanceof UserMove) {
+                    if (winnerVerifier.isUserWin(gameTable)) {
+                        System.out.println("YOU WIN!");
+                        printGameOver();
+                        return;
+                    }
+                } else {
+                    if (winnerVerifier.isComputerWin(gameTable)) {
+                        if (winnerVerifier.isComputerWin(gameTable)) {
+                            System.out.println("COMPUTER WIN!");
+                            printGameOver();
+                            return;
+                        }
+                    }
+                }
+                if (cellVerifier.allCellsFilled(gameTable)) {
+                    System.out.println("SORRY, DRAW!");
+                    printGameOver();
+                    return;
+                }
             }
         }
+    }
+
+    private void printGameOver() {
         System.out.println("GAME OVER!");
     }
 }

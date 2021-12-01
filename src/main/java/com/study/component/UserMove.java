@@ -24,7 +24,7 @@ import java.util.Scanner;
 /**
  * * @author study
  */
-public class UserMove {
+public class UserMove implements Move {
 
     private final CellNumberConverter cellNumberConverter;
 
