@@ -18,6 +18,10 @@ package com.study;
 
 import com.study.component.*;
 import com.study.component.keypad.TerminalNumericKeypadCellNumberConverter;
+import com.study.model.Player;
+
+import static com.study.component.Sign.O;
+import static com.study.component.Sign.X;
 
 /**
  * * @author study
@@ -28,10 +32,11 @@ public final class Launcher {
 
         Game game = new Game(
                 new DataPrinter(cellNumberConverter),
-                new ComputerMove(),
-                new UserMove(cellNumberConverter),
+                new Player(X, new ComputerMove()),
+                new Player(O, new ComputerMove()),
                 new WinnerVerifier(),
-                new CellVerifier());
+                new CellVerifier(),
+                true);
         game.play();
     }
 }
