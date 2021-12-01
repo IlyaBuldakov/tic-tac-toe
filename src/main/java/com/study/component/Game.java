@@ -17,8 +17,10 @@
 package com.study.component;
 
 import com.study.model.GameTable;
+import com.study.model.Player;
 
-import java.util.Random;
+import static com.study.component.Sign.O;
+import static com.study.component.Sign.X;
 
 /**
  * * @author study
@@ -49,34 +51,24 @@ public class Game {
 
     public void play() {
 
-        final Move[] moves = new Move[]{userMove, computerMove};
+        final Player[] players = new Player[]{new Player(X, userMove), new Player(O, computerMove)};
 
         System.out.println("Use the following mapping table to specify a cell using numbers from 1 to 9:");
         dataPrinter.printMappingTable();
         final GameTable gameTable = new GameTable();
-        if (new Random().nextBoolean()) {
-            moves[1].make(gameTable);
+        /* if (new Random().nextBoolean()) {
+            players[1].makeMove(gameTable, );
             dataPrinter.printGameTable(gameTable);
-        }
+        } */
 
         while (true) {
-            for (Move move : moves) {
-                move.make(gameTable);
+            for (Player player : players) {
+                player.makeMove(gameTable);
                 dataPrinter.printGameTable(gameTable);
-                if (move instanceof UserMove) {
-                    if (winnerVerifier.isUserWin(gameTable)) {
-                        System.out.println("YOU WIN!");
-                        printGameOver();
-                        return;
-                    }
-                } else {
-                    if (winnerVerifier.isComputerWin(gameTable)) {
-                        if (winnerVerifier.isComputerWin(gameTable)) {
-                            System.out.println("COMPUTER WIN!");
-                            printGameOver();
-                            return;
-                        }
-                    }
+                if (winnerVerifier.isWinner(gameTable, player)) {
+                    System.out.println(player + "WIN!");
+                    printGameOver();
+                    return;
                 }
                 if (cellVerifier.allCellsFilled(gameTable)) {
                     System.out.println("SORRY, DRAW!");

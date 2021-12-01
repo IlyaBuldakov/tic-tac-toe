@@ -14,13 +14,35 @@
  *    limitations under the License.
  */
 
-package com.study.component;
+package com.study.model;
 
-import com.study.model.GameTable;
+import com.study.component.Move;
+import com.study.component.Sign;
 
 /**
  * * @author study
  */
-public interface Move {
-    void make(final GameTable gameTable, Sign sign);
+public class Player {
+
+    private final Sign sign;
+
+    private final Move move;
+
+    public Player(final Sign sign, final Move move) {
+        this.sign = sign;
+        this.move = move;
+    }
+
+    public Sign getSign() {
+        return sign;
+    }
+
+    public void makeMove(final GameTable gameTable) {
+        move.make(gameTable, sign);
+    }
+
+    @Override
+    public String toString() {
+        return "'" + sign + "'";
+    }
 }

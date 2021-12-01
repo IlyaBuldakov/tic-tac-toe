@@ -32,11 +32,11 @@ public class UserMove implements Move {
         this.cellNumberConverter = cellNumberConverter;
     }
 
-    public void make(final GameTable gameTable) {
+    public void make(final GameTable gameTable, Sign sign) {
         while (true) {
             final Cell cell = getUserInput();
             if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, Sign.X);
+                gameTable.setSign(cell, sign);
                 return;
             } else {
                 System.out.println("Can't make a move, because the cell is not free! Try again!");
