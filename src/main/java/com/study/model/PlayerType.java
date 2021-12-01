@@ -14,18 +14,13 @@
  *    limitations under the License.
  */
 
-package com.study;
-
-import com.study.component.Game;
-import com.study.component.GameFactory;
+package com.study.model;
 
 /**
  * * @author study
  */
-public final class Launcher {
-    public static void main(final String[] args) {
-        final GameFactory gameFactory = new GameFactory(args);
-        final Game game = gameFactory.create();
-        game.play();
-    }
+public enum PlayerType {
+    USER,
+
+    COMPUTER
 }
