@@ -20,6 +20,7 @@ package com.study.model;
  * * @author study
  */
 public enum PlayerType {
+
     USER,
 
     COMPUTER

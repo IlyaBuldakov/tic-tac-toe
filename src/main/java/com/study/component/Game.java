@@ -60,7 +60,7 @@ public class Game {
         dataPrinter.printMappingTable();
         final GameTable gameTable = new GameTable();
         if (canSecondPlayerMakeFirstMove && new Random().nextBoolean()) {
-            player2.makeMove(gameTable);
+            players[1].makeMove(gameTable);
             dataPrinter.printGameTable(gameTable);
         }
 
