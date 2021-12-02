@@ -46,8 +46,6 @@ public class GameFactory {
                 } else {
                     System.err.println("Unsupported command line argument: '" + arg + "'");
                 }
-            } else {
-                System.err.println("Unsupported command line argument: '" + arg + "'");
             }
         }
         if (player1Type == null) {
