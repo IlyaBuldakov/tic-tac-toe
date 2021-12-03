@@ -16,6 +16,8 @@
 
 package com.study.component;
 
+import com.study.component.console.ConsoleDataPrinter;
+import com.study.component.console.ConsoleUserInputReader;
 import com.study.component.keypad.TerminalNumericKeypadCellNumberConverter;
 import com.study.model.Player;
 import com.study.model.PlayerType;
@@ -42,24 +44,33 @@ public class GameFactory {
     }
 
     public Game create() {
-        final CellNumberConverter cellNumberConverter = new TerminalNumericKeypadCellNumberConverter();
+
+        final CellNumberConverter cellNumberConverter
+                = new TerminalNumericKeypadCellNumberConverter();
+
+        final DataPrinter dataPrinter =
+                new ConsoleDataPrinter(cellNumberConverter);
+
+        final UserInputReader userInputReader =
+                new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
+
         final Player player1;
         if (player1Type == USER) {
-            player1 = new Player(X, new UserMove(cellNumberConverter));
+            player1 = new Player(X, new UserMove(dataPrinter, userInputReader));
         } else {
             player1 = new Player(X, new ComputerMove());
         }
         final Player player2;
         if (player2Type == USER) {
-            player2 = new Player(O, new UserMove(cellNumberConverter));
+            player2 = new Player(O, new UserMove(dataPrinter, userInputReader));
         } else {
             player2 = new Player(O, new ComputerMove());
         }
         final boolean canSecondPlayerMakeFirstMove = player1Type != player2Type;
         return new Game(
-                new DataPrinter(cellNumberConverter),
                 player1,
                 player2,
+                dataPrinter,
                 new WinnerVerifier(),
                 new CellVerifier(),
                 canSecondPlayerMakeFirstMove
