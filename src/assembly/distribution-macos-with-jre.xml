@@ -38,7 +38,7 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>${project.basedir}/src/main/scripts</directory>
+            <directory>${project.basedir}/src/main/scripts/unix</directory>
             <outputDirectory/>
             <includes>
                 <include>*.sh</include>

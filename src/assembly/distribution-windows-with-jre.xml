@@ -39,7 +39,7 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>${project.basedir}/src/main/scripts</directory>
+            <directory>${project.basedir}/src/main/scripts/windows</directory>
             <outputDirectory/>
             <includes>
                 <include>*.cmd</include>
