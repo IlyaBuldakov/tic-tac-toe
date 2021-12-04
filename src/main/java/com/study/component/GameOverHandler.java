@@ -19,13 +19,7 @@ package com.study.component;
 /**
  * * @author study
  */
-public enum Sign {
-    X,
-    O,
-    EMPTY {
-        @Override
-        public String toString() {
-            return " ";
-        }
-    };
+public interface GameOverHandler {
+
+    void gameOver();
 }

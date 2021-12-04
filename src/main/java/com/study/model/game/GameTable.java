@@ -14,13 +14,11 @@
  *    limitations under the License.
  */
 
-package com.study.model;
-
-import com.study.component.Sign;
+package com.study.model.game;
 
 import java.util.Arrays;
 
-import static com.study.component.Sign.EMPTY;
+import static com.study.model.game.Sign.EMPTY;
 
 /**
  * * @author study

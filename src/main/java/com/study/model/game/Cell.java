@@ -14,14 +14,34 @@
  *    limitations under the License.
  */
 
-package com.study.model;
+package com.study.model.game;
 
 /**
  * * @author study
  */
-public enum PlayerType {
+public class Cell {
+    private final int row;
 
-    USER,
+    private final int col;
 
-    COMPUTER
+    public Cell(final int row, final int col) {
+        this.row = row;
+        this.col = col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "row=" + row +
+                ", col=" + col +
+                '}';
+    }
 }

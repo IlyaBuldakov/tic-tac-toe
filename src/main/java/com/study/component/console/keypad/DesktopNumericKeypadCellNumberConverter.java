@@ -14,10 +14,10 @@
  *    limitations under the License.
  */
 
-package com.study.component.keypad;
+package com.study.component.console.keypad;
 
-import com.study.component.CellNumberConverter;
-import com.study.model.Cell;
+import com.study.component.console.CellNumberConverter;
+import com.study.model.game.Cell;
 
 /**
  * * @author study

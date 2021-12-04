@@ -16,20 +16,18 @@
 
 package com.study.component;
 
-import com.study.model.GameTable;
+import com.study.model.game.GameTable;
 
 /**
  * * @author study
  */
 public interface DataPrinter {
 
+    void printInstructions();
+
     void printInfoMessage(final String message);
 
     void printErrorMessage(final String message);
-
-    void printGameOver();
-
-    void printMappingTable();
 
     void printGameTable(final GameTable gameTable);
 }

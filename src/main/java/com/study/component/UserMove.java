@@ -16,8 +16,9 @@
 
 package com.study.component;
 
-import com.study.model.Cell;
-import com.study.model.GameTable;
+import com.study.model.game.Cell;
+import com.study.model.game.GameTable;
+import com.study.model.game.Sign;
 
 /**
  * * @author study

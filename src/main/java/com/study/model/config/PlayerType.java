@@ -14,15 +14,14 @@
  *    limitations under the License.
  */
 
-package com.study.component;
-
-import com.study.model.Cell;
+package com.study.model.config;
 
 /**
  * * @author study
  */
-public interface CellNumberConverter {
-    Cell toCell(char number);
+public enum PlayerType {
 
-    char toNumber(Cell cell);
+    USER,
+
+    COMPUTER
 }

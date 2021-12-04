@@ -16,8 +16,8 @@
 
 package com.study.component;
 
-import com.study.model.GameTable;
-import com.study.model.Player;
+import com.study.model.game.GameTable;
+import com.study.model.game.Player;
 
 import java.util.Random;
 
@@ -38,27 +38,29 @@ public class Game {
 
     private final DataPrinter dataPrinter;
 
+    private final GameOverHandler gameOverHandler;
+
     public Game(final Player player1,
                 final Player player2,
                 final DataPrinter dataPrinter,
                 final WinnerVerifier winnerVerifier,
                 final CellVerifier cellVerifier,
-                final boolean canSecondPlayerMakeFirstMove
-    ) {
+                final boolean canSecondPlayerMakeFirstMove,
+                final GameOverHandler gameOverHandler) {
         this.player1 = player1;
         this.player2 = player2;
         this.dataPrinter = dataPrinter;
         this.winnerVerifier = winnerVerifier;
         this.cellVerifier = cellVerifier;
         this.canSecondPlayerMakeFirstMove = canSecondPlayerMakeFirstMove;
+        this.gameOverHandler = gameOverHandler;
     }
 
     public void play() {
 
         final Player[] players = new Player[]{player1, player2};
 
-        dataPrinter.printInfoMessage("Use the following mapping table to specify a cell using numbers from 1 to 9:");
-        dataPrinter.printMappingTable();
+        dataPrinter.printInstructions();
         final GameTable gameTable = new GameTable();
         if (canSecondPlayerMakeFirstMove && new Random().nextBoolean()) {
             players[1].makeMove(gameTable);
@@ -71,12 +73,12 @@ public class Game {
                 dataPrinter.printGameTable(gameTable);
                 if (winnerVerifier.isWinner(gameTable, player)) {
                     dataPrinter.printInfoMessage(player + "WIN!");
-                    dataPrinter.printGameOver();
+                    gameOverHandler.gameOver();
                     return;
                 }
                 if (cellVerifier.allCellsFilled(gameTable)) {
                     dataPrinter.printInfoMessage("SORRY, DRAW!");
-                    dataPrinter.printGameOver();
+                    gameOverHandler.gameOver();
                     return;
                 }
             }

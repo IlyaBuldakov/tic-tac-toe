@@ -16,10 +16,9 @@
 
 package com.study.component.console;
 
-import com.study.component.CellNumberConverter;
 import com.study.component.DataPrinter;
 import com.study.component.UserInputReader;
-import com.study.model.Cell;
+import com.study.model.game.Cell;
 
 import java.util.Scanner;
 

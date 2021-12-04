@@ -14,24 +14,15 @@
  *    limitations under the License.
  */
 
-package com.study.component.keypad;
+package com.study.component.console;
 
-import com.study.component.CellNumberConverter;
-import com.study.model.Cell;
+import com.study.model.game.Cell;
 
 /**
  * * @author study
  */
-public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
+public interface CellNumberConverter {
+    Cell toCell(char number);
 
-    @Override
-    public Cell toCell(final char number) {
-        final int val = number - '0' - 1;
-        return new Cell(val / 3, val % 3);
-    }
-
-    @Override
-    public char toNumber(final Cell cell) {
-        return (char) ('0' + (cell.getRow() * 3 + cell.getCol() + 1));
-    }
+    char toNumber(Cell cell);
 }

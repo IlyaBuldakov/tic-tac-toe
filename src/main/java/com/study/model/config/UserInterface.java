@@ -14,22 +14,14 @@
  *    limitations under the License.
  */
 
-package com.study.component;
-
-import com.study.model.game.Cell;
-import com.study.model.game.GameTable;
+package com.study.model.config;
 
 /**
  * * @author study
  */
-public class CellVerifier {
+public enum UserInterface {
 
-    public boolean allCellsFilled(final GameTable gameTable) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (gameTable.isEmpty(new Cell(i, j))) return false;
-            }
-        }
-        return true;
-    }
+    GUI,
+
+    CONSOLE
 }

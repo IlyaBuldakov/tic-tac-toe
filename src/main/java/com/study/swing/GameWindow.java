@@ -17,9 +17,10 @@
 package com.study.swing;
 
 import com.study.component.DataPrinter;
+import com.study.component.GameOverHandler;
 import com.study.component.UserInputReader;
-import com.study.model.Cell;
-import com.study.model.GameTable;
+import com.study.model.game.Cell;
+import com.study.model.game.GameTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +30,7 @@ import java.awt.event.MouseEvent;
 /**
  * * @author study
  */
-public final class GameWindow extends JFrame implements DataPrinter, UserInputReader {
+public final class GameWindow extends JFrame implements DataPrinter, UserInputReader, GameOverHandler {
 
     private static final int GAME_TABLE_SIZE = 3;
 
@@ -93,6 +94,11 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
     }
 
     @Override
+    public void printInstructions() {
+        // do nothing
+    }
+
+    @Override
     public void printInfoMessage(final String message) {
         JOptionPane.showMessageDialog(this, message, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -100,16 +106,6 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
     @Override
     public void printErrorMessage(final String message) {
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-    @Override
-    public void printGameOver() {
-        JOptionPane.showMessageDialog(this, "Game Over!", "Info", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    @Override
-    public void printMappingTable() {
-        // do nothing
     }
 
     @Override
@@ -132,5 +128,10 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
             }
         }
         return clickedCell;
+    }
+
+    @Override
+    public void gameOver() {
+        System.exit(0);
     }
 }

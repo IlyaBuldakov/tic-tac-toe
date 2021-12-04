@@ -14,22 +14,27 @@
  *    limitations under the License.
  */
 
-package com.study.component;
+package com.study.component.console;
 
-import com.study.model.game.Cell;
-import com.study.model.game.GameTable;
+import com.study.component.DataPrinter;
+import com.study.component.GameOverHandler;
+
+import java.util.Scanner;
 
 /**
  * * @author study
  */
-public class CellVerifier {
+public class ConsoleGameOverHandler implements GameOverHandler {
 
-    public boolean allCellsFilled(final GameTable gameTable) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (gameTable.isEmpty(new Cell(i, j))) return false;
-            }
-        }
-        return true;
+    private final DataPrinter dataPrinter;
+
+    public ConsoleGameOverHandler(final DataPrinter dataPrinter) {
+        this.dataPrinter = dataPrinter;
+    }
+
+    @Override
+    public void gameOver() {
+        dataPrinter.printInfoMessage("GAME OVER!");
+        new Scanner(System.in).nextLine();
     }
 }

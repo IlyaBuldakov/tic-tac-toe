@@ -17,7 +17,6 @@
 package com.study;
 
 import com.study.component.Game;
-import com.study.component.GameFactory;
 
 /**
  * * @author study

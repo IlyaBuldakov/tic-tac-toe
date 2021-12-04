@@ -14,22 +14,34 @@
  *    limitations under the License.
  */
 
-package com.study.component;
+package com.study.model.game;
 
-import com.study.model.game.Cell;
-import com.study.model.game.GameTable;
+import com.study.component.Move;
 
 /**
  * * @author study
  */
-public class CellVerifier {
+public class Player {
 
-    public boolean allCellsFilled(final GameTable gameTable) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (gameTable.isEmpty(new Cell(i, j))) return false;
-            }
-        }
-        return true;
+    private final Sign sign;
+
+    private final Move move;
+
+    public Player(final Sign sign, final Move move) {
+        this.sign = sign;
+        this.move = move;
+    }
+
+    public Sign getSign() {
+        return sign;
+    }
+
+    public void makeMove(final GameTable gameTable) {
+        move.make(gameTable, sign);
+    }
+
+    @Override
+    public String toString() {
+        return "'" + sign + "'";
     }
 }

@@ -16,7 +16,7 @@
 
 package com.study.component;
 
-import com.study.model.Cell;
+import com.study.model.game.Cell;
 
 /**
  * * @author study

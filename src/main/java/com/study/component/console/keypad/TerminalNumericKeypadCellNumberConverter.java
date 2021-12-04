@@ -14,35 +14,24 @@
  *    limitations under the License.
  */
 
-package com.study.model;
+package com.study.component.console.keypad;
 
-import com.study.component.Move;
-import com.study.component.Sign;
+import com.study.component.console.CellNumberConverter;
+import com.study.model.game.Cell;
 
 /**
  * * @author study
  */
-public class Player {
+public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
 
-    private final Sign sign;
-
-    private final Move move;
-
-    public Player(final Sign sign, final Move move) {
-        this.sign = sign;
-        this.move = move;
-    }
-
-    public Sign getSign() {
-        return sign;
-    }
-
-    public void makeMove(final GameTable gameTable) {
-        move.make(gameTable, sign);
+    @Override
+    public Cell toCell(final char number) {
+        final int val = number - '0' - 1;
+        return new Cell(val / 3, val % 3);
     }
 
     @Override
-    public String toString() {
-        return "'" + sign + "'";
+    public char toNumber(final Cell cell) {
+        return (char) ('0' + (cell.getRow() * 3 + cell.getCol() + 1));
     }
 }
