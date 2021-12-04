@@ -1,0 +1,2 @@
+@echo off
+start.cmd console user computer
