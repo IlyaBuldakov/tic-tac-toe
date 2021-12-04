@@ -16,11 +16,10 @@
 
 package com.study.component;
 
-import com.study.component.console.ConsoleDataPrinter;
-import com.study.component.console.ConsoleUserInputReader;
 import com.study.component.keypad.TerminalNumericKeypadCellNumberConverter;
 import com.study.model.Player;
 import com.study.model.PlayerType;
+import com.study.swing.GameWindow;
 
 import static com.study.component.Sign.O;
 import static com.study.component.Sign.X;
@@ -45,14 +44,14 @@ public class GameFactory {
 
     public Game create() {
 
+        final GameWindow gameWindow = new GameWindow();
+
         final CellNumberConverter cellNumberConverter
                 = new TerminalNumericKeypadCellNumberConverter();
 
-        final DataPrinter dataPrinter =
-                new ConsoleDataPrinter(cellNumberConverter);
+        final DataPrinter dataPrinter = gameWindow;
 
-        final UserInputReader userInputReader =
-                new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
+        final UserInputReader userInputReader = gameWindow;
 
         final Player player1;
         if (player1Type == USER) {
