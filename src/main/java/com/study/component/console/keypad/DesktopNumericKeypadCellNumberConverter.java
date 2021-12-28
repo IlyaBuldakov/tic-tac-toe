@@ -19,6 +19,8 @@ package com.study.component.console.keypad;
 import com.study.component.console.CellNumberConverter;
 import com.study.model.game.Cell;
 
+import static java.lang.String.format;
+
 /**
  * * @author study
  */
@@ -37,7 +39,10 @@ public class DesktopNumericKeypadCellNumberConverter implements CellNumberConver
                 if (table[i][j] == number) return new Cell(i, j);
             }
         }
-        return null;
+        throw new IllegalArgumentException(
+                format("Incorrect cell number. " +
+                        "Your number %s does not fall in the range from 1 to 9", number)
+        );
     }
 
     @Override
