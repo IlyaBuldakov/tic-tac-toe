@@ -17,6 +17,7 @@
 package com.study.component.console.keypad;
 
 import com.study.component.console.CellNumberConverter;
+import com.study.component.exceptions.IncorrectCellCoordinatesException;
 import com.study.model.game.Cell;
 
 import static java.lang.String.format;
@@ -47,7 +48,13 @@ public class DesktopNumericKeypadCellNumberConverter implements CellNumberConver
 
     @Override
     public char toNumber(final Cell cell) {
-        return table[cell.getRow()][cell.getCol()];
+        try {
+            return table[cell.getRow()][cell.getCol()];
+        } catch (final ArrayIndexOutOfBoundsException ignored) {
+            throw new IncorrectCellCoordinatesException(
+                    format("Illegal cell row and column coordinates (index must to be from 0 to 2). " +
+                            "You trying to find cell with row: %s and col: %s", cell.getRow(), cell.getCol())
+            );
+        }
     }
-
 }
