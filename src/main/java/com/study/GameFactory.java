@@ -22,7 +22,8 @@ import com.study.component.console.CellNumberConverter;
 import com.study.component.console.ConsoleDataPrinter;
 import com.study.component.console.ConsoleGameOverHandler;
 import com.study.component.console.ConsoleUserInputReader;
-import com.study.component.console.keypad.TerminalNumericKeypadCellNumberConverter;
+import com.study.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
+import com.study.component.strategy.RandomComputerMoveStrategy;
 import com.study.model.config.PlayerType;
 import com.study.model.config.UserInterface;
 import com.study.model.game.Player;
@@ -56,8 +57,9 @@ public class GameFactory {
 
     public Game create() {
 
-        final CellNumberConverter cellNumberConverter
-                = new TerminalNumericKeypadCellNumberConverter();
+        final ComputerMoveStrategy[] strategies = {
+                new RandomComputerMoveStrategy()
+        };
 
         final GameWindow gameWindow;
 
@@ -73,7 +75,8 @@ public class GameFactory {
             userInputReader = gameWindow;
             gameOverHandler = gameWindow;
         } else {
-            gameWindow = null;
+            final CellNumberConverter cellNumberConverter
+                    = new DesktopNumericKeypadCellNumberConverter();
             dataPrinter = new ConsoleDataPrinter(cellNumberConverter);
             userInputReader = new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
             gameOverHandler = new ConsoleGameOverHandler(dataPrinter);
@@ -83,13 +86,13 @@ public class GameFactory {
         if (player1Type == USER) {
             player1 = new Player(X, new UserMove(dataPrinter, userInputReader));
         } else {
-            player1 = new Player(X, new ComputerMove());
+            player1 = new Player(X, new ComputerMove(strategies));
         }
         final Player player2;
         if (player2Type == USER) {
             player2 = new Player(O, new UserMove(dataPrinter, userInputReader));
         } else {
-            player2 = new Player(O, new ComputerMove());
+            player2 = new Player(O, new ComputerMove(strategies));
         }
         final boolean canSecondPlayerMakeFirstMove = player1Type != player2Type;
         return new Game(
