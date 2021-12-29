@@ -48,14 +48,21 @@ public class CommandLineArgumentParser {
                 } else if (player2Type == null) {
                     player2Type = PlayerType.valueOf(arg.toUpperCase());
                 } else {
-                    System.err.println("Unsupported command line argument: '" + arg + "'");
+                    System.err.printf(
+                            "Unnecessary parameter '%s', because player types already set ( '%s' and '%s')%n"
+                            , arg
+                            , player1Type
+                            , player2Type);
                 }
             } else if (GUI.name().equalsIgnoreCase(arg) || CONSOLE.name().equalsIgnoreCase(arg)) {
                 if (userInterface == null) {
                     userInterface = UserInterface.valueOf(arg.toUpperCase(Locale.ROOT));
                 }
             } else {
-                System.err.println("Unsupported command line argument: '" + arg + "'");
+                System.err.printf(
+                        "Unsupported command line argument: '%s'%n"
+                        , arg
+                );
             }
         }
         if (userInterface == null) userInterface = CONSOLE;
@@ -76,7 +83,9 @@ public class CommandLineArgumentParser {
 
         private final UserInterface userInterface;
 
-        private CommandLineArguments(final PlayerType player1Type, final PlayerType player2Type, final UserInterface userInterface) {
+        private CommandLineArguments(final PlayerType player1Type,
+                                     final PlayerType player2Type,
+                                     final UserInterface userInterface) {
             this.player1Type = player1Type;
             this.player2Type = player2Type;
             this.userInterface = userInterface;
