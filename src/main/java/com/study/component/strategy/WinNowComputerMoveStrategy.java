@@ -18,48 +18,18 @@ public class WinNowComputerMoveStrategy implements ComputerMoveStrategy {
                 isDoubleSignBySecondaryDiagonal(gameTable, sign);
     }
 
+    @SuppressWarnings("Convert2MethodRef")
     private boolean isDoubleSignByRows(final GameTable gameTable, final Sign sign) {
         for (int i = 0; i < 3; i++) {
-            int countEmptyCells = 0;
-            int countSignCells = 0;
-            Cell emptyCell = null;
-            for (int j = 0; j < 3; j++) {
-                Cell cell = new Cell(i, j);
-                if (gameTable.isEmpty(cell)) {
-                    emptyCell = cell;
-                    countEmptyCells++;
-                } else if (gameTable.getSign(cell) == sign) {
-                    countSignCells++;
-                } else {
-                    break;
-                }
-            }
-            if (countSignCells == 2 && countEmptyCells == 1) {
-                gameTable.setSign(emptyCell, sign);
+            if (isDoubleSignUsingLambda(gameTable, sign, i, (k, j) -> new Cell(k, j)))
                 return true;
-            }
         }
         return false;
     }
 
     private boolean isDoubleSignByCols(final GameTable gameTable, final Sign sign) {
         for (int i = 0; i < 3; i++) {
-            int countEmptyCells = 0;
-            int countSignCells = 0;
-            Cell emptyCell = null;
-            for (int j = 0; j < 3; j++) {
-                Cell cell = new Cell(j, i);
-                if (gameTable.isEmpty(cell)) {
-                    emptyCell = cell;
-                    countEmptyCells++;
-                } else if (gameTable.getSign(cell) == sign) {
-                    countSignCells++;
-                } else {
-                    break;
-                }
-            }
-            if (countSignCells == 2 && countEmptyCells == 1) {
-                gameTable.setSign(emptyCell, sign);
+            if (isDoubleSignUsingLambda(gameTable, sign, i, (k, j) -> new Cell(j, k))) {
                 return true;
             }
         }
@@ -67,11 +37,22 @@ public class WinNowComputerMoveStrategy implements ComputerMoveStrategy {
     }
 
     private boolean isDoubleSignByMainDiagonal(final GameTable gameTable, final Sign sign) {
+        return isDoubleSignUsingLambda(gameTable, sign, -1, (k, j) -> new Cell(j, j));
+    }
+
+    private boolean isDoubleSignBySecondaryDiagonal(final GameTable gameTable, final Sign sign) {
+        return isDoubleSignUsingLambda(gameTable, sign, -1, (k, j) -> new Cell(j, 2 - j));
+    }
+
+    private boolean isDoubleSignUsingLambda(final GameTable gameTable,
+                                            final Sign sign,
+                                            final int i,
+                                            final Lambda lambda) {
         int countEmptyCells = 0;
         int countSignCells = 0;
         Cell emptyCell = null;
         for (int j = 0; j < 3; j++) {
-            Cell cell = new Cell(j, j);
+            Cell cell = lambda.convert(i, j);
             if (gameTable.isEmpty(cell)) {
                 emptyCell = cell;
                 countEmptyCells++;
@@ -88,25 +69,9 @@ public class WinNowComputerMoveStrategy implements ComputerMoveStrategy {
         return false;
     }
 
-    private boolean isDoubleSignBySecondaryDiagonal(final GameTable gameTable, final Sign sign) {
-        int countEmptyCells = 0;
-        int countSignCells = 0;
-        Cell emptyCell = null;
-        for (int j = 0; j < 3; j++) {
-            Cell cell = new Cell(j, 2 - j);
-            if (gameTable.isEmpty(cell)) {
-                emptyCell = cell;
-                countEmptyCells++;
-            } else if (gameTable.getSign(cell) == sign) {
-                countSignCells++;
-            } else {
-                break;
-            }
-        }
-        if (countSignCells == 2 && countEmptyCells == 1) {
-            gameTable.setSign(emptyCell, sign);
-            return true;
-        }
-        return false;
+    @FunctionalInterface
+    private interface Lambda {
+
+        Cell convert(int k, int j);
     }
 }
