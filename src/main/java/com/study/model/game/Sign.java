@@ -28,4 +28,10 @@ public enum Sign {
             return " ";
         }
     };
+
+    public Sign getOppositeSign() {
+        if (this == X) return O;
+        else if (this == O) return X;
+        else throw new IllegalStateException("'Empty' does not have opposite value");
+    }
 }
