@@ -24,6 +24,7 @@ import com.study.component.console.ConsoleGameOverHandler;
 import com.study.component.console.ConsoleUserInputReader;
 import com.study.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
 import com.study.component.strategy.FirstMoveToTheCenterComputerMoveStrategy;
+import com.study.component.strategy.PreventUserWinComputerMoveStrategy;
 import com.study.component.strategy.RandomComputerMoveStrategy;
 import com.study.component.strategy.WinNowComputerMoveStrategy;
 import com.study.model.config.PlayerType;
@@ -61,6 +62,7 @@ public class GameFactory {
 
         final ComputerMoveStrategy[] strategies = {
                 new WinNowComputerMoveStrategy(),
+                new PreventUserWinComputerMoveStrategy(),
                 new FirstMoveToTheCenterComputerMoveStrategy(),
                 new RandomComputerMoveStrategy()
         };
