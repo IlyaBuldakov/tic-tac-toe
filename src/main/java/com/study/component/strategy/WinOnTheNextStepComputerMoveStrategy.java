@@ -6,10 +6,10 @@ import com.study.model.game.Sign;
 /**
  * * @author study
  */
-public class WinNowComputerMoveStrategy extends AbstractComputerMoveStrategy implements ComputerMoveStrategy {
+public class WinOnTheNextStepComputerMoveStrategy extends AbstractComputerMoveStrategy implements ComputerMoveStrategy {
 
-    public WinNowComputerMoveStrategy() {
-        super(2);
+    public WinOnTheNextStepComputerMoveStrategy() {
+        super(1);
     }
 
     @Override
