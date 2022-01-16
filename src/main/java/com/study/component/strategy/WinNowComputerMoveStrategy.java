@@ -9,7 +9,7 @@ import com.study.model.game.Sign;
 public class WinNowComputerMoveStrategy extends AbstractComputerMoveStrategy implements ComputerMoveStrategy {
 
     public WinNowComputerMoveStrategy() {
-        super(2);
+        super(1);
     }
 
     @Override
