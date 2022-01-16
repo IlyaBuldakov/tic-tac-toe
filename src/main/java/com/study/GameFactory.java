@@ -23,7 +23,7 @@ import com.study.component.console.ConsoleDataPrinter;
 import com.study.component.console.ConsoleGameOverHandler;
 import com.study.component.console.ConsoleUserInputReader;
 import com.study.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
-import com.study.component.strategy.*;
+import com.study.model.config.Level;
 import com.study.model.config.PlayerType;
 import com.study.model.config.UserInterface;
 import com.study.model.game.Player;
@@ -43,7 +43,9 @@ public class GameFactory {
 
     private final PlayerType player2Type;
 
-    final UserInterface userInterface;
+    private final UserInterface userInterface;
+
+    private final Level level;
 
     public GameFactory(final String[] args) {
 
@@ -52,18 +54,13 @@ public class GameFactory {
         userInterface = commandLineArguments.getUserInterface();
         player1Type = commandLineArguments.getPlayer1Type();
         player2Type = commandLineArguments.getPlayer2Type();
+        level = commandLineArguments.getLevel();
 
     }
 
     public Game create() {
 
-        final ComputerMoveStrategy[] strategies = {
-                new WinNowComputerMoveStrategy(),
-                new PreventUserWinComputerMoveStrategy(),
-                new WinOnTheNextStepComputerMoveStrategy(),
-                new FirstMoveToTheCenterComputerMoveStrategy(),
-                new RandomComputerMoveStrategy()
-        };
+        final ComputerMoveStrategy[] strategies = level.getStrategies();
 
         final GameWindow gameWindow;
 
